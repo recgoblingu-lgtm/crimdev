@@ -1,6 +1,75 @@
 const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/REPLACE_ME/REPLACE_ME';
 
-async function loadGames(){const response=await fetch('data/games.json');return response.json()}
-function card(game){return `<a class="game-card" href="game.html?id=${encodeURIComponent(game.id)}"><img src="${game.image}" alt="${game.title}"><div><h3>${game.title}</h3><p>${game.description}</p><small>${game.genre} · ${game.platform} · ${game.price}</small></div></a>`}
-const list=document.querySelector('#game-list');if(list){loadGames().then(games=>{list.innerHTML=games.map(card).join('')}).catch(()=>{list.textContent='Could not load games.'})}
-const form=document.querySelector('#submit-form');if(form){for(const id of ['thumbnail','image','video']){const input=document.querySelector('#'+id);input?.addEventListener('change',()=>{const name=document.querySelector('#'+id+'-name');if(name)name.textContent=input.files[0]?.name||'Optional'})}form.addEventListener('submit',async event=>{event.preventDefault();const data=new FormData(form);const payload={username:'CrimDev submissions',embeds:[{title:`New game: ${data.get('title')}`,description:data.get('description'),color:13964224,fields:[{name:'Email',value:data.get('email')},{name:'Files',value:`${data.get('thumbnail').name}, ${data.get('image').name}${data.get('video')?.name?`, ${data.get('video').name}`:''}`}]}]};const status=document.querySelector('#status');if(DISCORD_WEBHOOK_URL.includes('REPLACE_ME')){status.textContent='Demo submission saved. Replace the placeholder Discord webhook in app.js to send it.';status.classList.add('show');console.log(payload);form.reset();return}try{const response=await fetch(DISCORD_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});if(!response.ok)throw Error('Webhook failed');status.textContent='Submitted successfully.';status.classList.add('show');form.reset()}catch(error){status.textContent='Submission failed. Check the webhook URL.';status.classList.add('show')}})}
+const form = document.querySelector('#submit-form');
+
+if (form) {
+  for (const id of ['thumbnail', 'image', 'video']) {
+    const input = document.querySelector(`#${id}`);
+
+    input?.addEventListener('change', () => {
+      const name = document.querySelector(`#${id}-name`);
+
+      if (name) {
+        name.textContent = input.files[0]?.name || 'Optional';
+      }
+    });
+  }
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const data = new FormData(form);
+    const status = document.querySelector('#status');
+    const payload = {
+      username: 'CrimDev submissions',
+      embeds: [
+        {
+          title: `New game: ${data.get('title')}`,
+          description: data.get('description'),
+          color: 13964224,
+          fields: [
+            {
+              name: 'Email',
+              value: data.get('email')
+            },
+            {
+              name: 'Files',
+              value: `${data.get('thumbnail').name}, ${data.get('image').name}${
+                data.get('video')?.name ? `, ${data.get('video').name}` : ''
+              }`
+            }
+          ]
+        }
+      ]
+    };
+
+    if (DISCORD_WEBHOOK_URL.includes('REPLACE_ME')) {
+      status.textContent = 'Demo submission saved. Replace the placeholder Discord webhook in app.js to send it.';
+      status.classList.add('show');
+      console.log(payload);
+      form.reset();
+      return;
+    }
+
+    try {
+      const response = await fetch(DISCORD_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error('Webhook failed');
+      }
+
+      status.textContent = 'Submitted successfully.';
+      status.classList.add('show');
+      form.reset();
+    } catch (error) {
+      status.textContent = 'Submission failed. Check the webhook URL.';
+      status.classList.add('show');
+    }
+  });
+}

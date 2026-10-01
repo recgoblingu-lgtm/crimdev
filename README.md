@@ -1,15 +1,17 @@
 # CrimDev
 
-A very basic static game site with three pages: home, one reusable placeholder game page, and a game submission page.
+CrimDev is a small static game site made with direct HTML, CSS, and JavaScript.
 
-## Run locally
+## Pages
 
-From this folder run `python3 -m http.server 4173` and open `http://localhost:4173`.
+- `index.html` — home page with the PLACEHOLDER game card
+- `game.html` — basic PLACEHOLDER game page
+- `submit.html` — game submission form
 
 ## Add a game
 
-Add images under `assets/`, then add an object to `data/games.json`. The home page automatically creates a card linking to `game.html?id=YOUR_ID`. The included entry is intentionally named `PLACEHOLDER`.
+There is no games.json file. To add a game, copy `game.html`, change the title, description, image, and details, then add a new card link directly inside the game list in `index.html`.
 
 ## Discord webhook
 
-The submission form includes title, description, two required image files, optional video, email, and permission confirmation. `app.js` contains a placeholder `DISCORD_WEBHOOK_URL`. Replace it before use. For production, use a server-side proxy so the real webhook URL is not public.
+The submission form includes a title, description, two required image uploads, an optional video, email, and permission confirmation. `app.js` contains a placeholder `DISCORD_WEBHOOK_URL`. Replace it before use. For production, use a server-side proxy so the real webhook URL is not public.
