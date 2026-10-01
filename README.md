@@ -1,19 +1,15 @@
 # CrimDev
 
-CrimDev is a static, Steam-inspired indie game shelf built with plain HTML, CSS, and JavaScript. There is no login page and no backend required for the catalog.
+A very basic static game site with three pages: home, one reusable placeholder game page, and a game submission page.
 
-## Run it
+## Run locally
 
-Serve this folder from any static host or run `python3 -m http.server 4173` from the project root, then open `http://localhost:4173`.
+From this folder run `python3 -m http.server 4173` and open `http://localhost:4173`.
 
-## Add a new game
+## Add a game
 
-1. Add the game's cover and feature images to `assets/games/`.
-2. Add another object to `data/games.json` with a unique `id`, title, description, `cover`, `banner`, `screenshots`, genres, developer, release, platforms, and price.
-3. Commit and push to GitHub. The home page will render a new card automatically, and the reusable `game.html?id=YOUR_ID` page will render its details.
+Add images under `assets/`, then add an object to `data/games.json`. The home page automatically creates a card linking to `game.html?id=YOUR_ID`. The included entry is intentionally named `PLACEHOLDER`.
 
-The included `Neon Rush` entry is the placeholder game. The SVG assets are intentionally easy to replace with PNG, JPG, or more SVG files.
+## Discord webhook
 
-## Discord submissions
-
-`submit.html` supports a title, description, required thumbnail/cover image, required feature image, optional video, and contact email. The form is currently in demo mode because `DISCORD_WEBHOOK_URL` in `app.js` is a placeholder. Replace it before going live. For production, route webhook requests through a serverless function so the real webhook URL is not exposed in the browser.
+The submission form includes title, description, two required image files, optional video, email, and permission confirmation. `app.js` contains a placeholder `DISCORD_WEBHOOK_URL`. Replace it before use. For production, use a server-side proxy so the real webhook URL is not public.
