@@ -1,4 +1,4 @@
-fetch("/maintenance.json")
+fetch("maintenance.json")
   .then(res => res.json())
   .then(config => {
     if (config.maintenance === true) {
