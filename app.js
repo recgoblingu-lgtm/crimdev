@@ -1,4 +1,4 @@
-const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/REPLACE_ME/REPLACE_ME';
+const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1555029821036437604/ne-dYk7X9QKWNf5jAmmz_5dlrKff0sOrAfZVLZC9Pgq8Nfd2FIBFg9WnpdeVeN1ErG9F';
 
 const form = document.querySelector('#submit-form');
 
