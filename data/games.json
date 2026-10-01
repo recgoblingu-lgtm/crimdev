@@ -1,0 +1,17 @@
+[
+  {
+    "id": "neon-rush",
+    "title": "Neon Rush",
+    "tagline": "The city never sleeps. Neither do you.",
+    "description": "Neon Rush is a fast, synth-heavy arcade runner set above a flooded megacity. Chain wall-runs, steal momentum from rival couriers, and stay ahead of the midnight shutdown.",
+    "longDescription": "Built for short sessions and high-score chasers, Neon Rush puts you in the boots of a courier threading rooftops under a permanent electric storm. Every run is a new route through the city: hit the clean line, bank your combo, and leave a brighter trail than the last runner.",
+    "cover": "assets/games/neon-rush-cover.svg",
+    "banner": "assets/games/neon-rush-banner.svg",
+    "screenshots": ["assets/games/neon-rush-banner.svg", "assets/games/neon-rush-cover.svg"],
+    "genres": ["Arcade", "Action", "Indie"],
+    "developer": "CrimDev Labs",
+    "release": "Coming soon",
+    "platforms": ["Windows", "Linux"],
+    "price": "Free to play"
+  }
+]
