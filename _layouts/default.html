@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ page.title }}</title>
+</head>
+<body>
+
+<script>
+  const MAINTENANCE = true;
+  if (MAINTENANCE) {
+    document.body.innerHTML = `
+      <div style="
+        position: fixed;
+        inset: 0;
+        background: #111;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+        z-index: 9999;
+      ">
+        <div style="
+          background: #FFD54F;
+          padding: 40px;
+          border-radius: 12px;
+          text-align: center;
+        ">
+          <h1> SITE UNDER MAINTENANCE</h1>
+          <p>Please check back later!</p>
+        </div>
+      </div>
+    `;
+  }
+</script>
+
+{{ content }}
+
+</body>
+</html>
