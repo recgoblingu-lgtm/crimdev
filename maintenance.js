@@ -6,88 +6,93 @@ fetch("maintenance.json")
         <style>
           body {
             margin: 0;
-            font-family: system-ui, Arial, sans-serif;
-            background: radial-gradient(circle at top, #1a1a1a, #0b0b0b);
-            color: white;
-            height: 100vh;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: #0e0e0e;
+            color: #eaeaea;
           }
 
           .wrap {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
           }
 
           .card {
-            background: rgba(255, 213, 79, 0.12);
-            border: 1px solid rgba(255, 213, 79, 0.4);
-            padding: 40px;
-            border-radius: 16px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 32px 28px;
+            max-width: 400px;
+            width: 100%;
             text-align: center;
-            max-width: 420px;
-            box-shadow: 0 0 40px rgba(0,0,0,0.6);
-            backdrop-filter: blur(10px);
           }
 
           .icon {
-            font-size: 48px;
-            margin-bottom: 10px;
+            font-size: 40px;
+            margin-bottom: 6px;
           }
 
           h1 {
-            margin: 10px 0;
-            font-size: 22px;
-            color: #FFD54F;
+            margin: 8px 0 6px;
+            font-size: 20px;
+            color: #ffcc55;
+            font-weight: 600;
           }
 
           p {
-            opacity: 0.8;
             margin: 0;
+            font-size: 14px;
+            color: #bbb;
+          }
+
+          .dots {
+            margin-top: 14px;
           }
 
           .dots span {
             display: inline-block;
-            width: 8px;
-            height: 8px;
-            margin: 0 3px;
-            background: #FFD54F;
+            width: 6px;
+            height: 6px;
+            margin: 0 2px;
+            background: #ffcc55;
             border-radius: 50%;
-            animation: bounce 1s infinite alternate;
+            opacity: 0.4;
+            animation: blink 1.2s infinite;
           }
 
           .dots span:nth-child(2) { animation-delay: 0.2s; }
           .dots span:nth-child(3) { animation-delay: 0.4s; }
 
-          @keyframes bounce {
-            from { transform: translateY(0); opacity: 0.5; }
-            to { transform: translateY(-6px); opacity: 1; }
+          @keyframes blink {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
           }
 
           .small {
-            margin-top: 15px;
+            margin-top: 12px;
             font-size: 12px;
-            opacity: 0.6;
+            color: #777;
           }
         </style>
 
         <div class="wrap">
           <div class="card">
-            <div class="icon">⚠️</div>
-            <h1>SITE UNDER MAINTENANCE</h1>
-            <p>Please check back later</p>
+            <div class="icon">⚠</div>
+            <h1>Maintenance</h1>
+            <p>site's down for a bit — working on it</p>
 
-            <div class="dots" style="margin-top:12px;">
+            <div class="dots">
               <span></span><span></span><span></span>
             </div>
 
             <div class="small">
-              CrimDev is being updated for a better experience!
+              CrimDev update in progress
             </div>
           </div>
         </div>
       `;
     }
   })
-  .catch(err => console.log("Maintenance check failed:", err));
+  .catch(err => console.log("maintenance check failed:", err));
