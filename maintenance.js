@@ -83,7 +83,7 @@ fetch("maintenance.json")
             </div>
 
             <div class="small">
-              Recquiem is being updated for a better experience
+              CrimDev is being updated for a better experience!
             </div>
           </div>
         </div>
